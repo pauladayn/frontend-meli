@@ -1,7 +1,6 @@
 import express from "express";
 import { searchItems, getItem, getItemDescription } from "../services/Item.js";
 import { sanitizeItemDetails, sanitizeItemsList } from "../utils/items.js";
-import { log } from "console";
 
 export const searchItemsController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
@@ -11,11 +10,8 @@ export const searchItemsController = async (req: express.Request, res: express.R
         //     error.statusCode = 400;
         //     throw error;
         // }
-        log('q-----', q);
         const { results, filters } = await searchItems(q as string);
         const items = sanitizeItemsList(results, filters);
-        console.log('items---------', items);
-
         res.json(items);
     } catch (error) {
         next(error);
@@ -25,8 +21,10 @@ export const searchItemsController = async (req: express.Request, res: express.R
 export const getItemController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
     try {
         const { id } = req.params;
-        const data = await getItem(id);
-        res.json(data);
+        const { id: itemId, ...rest } = await getItem(id);
+        const itemDescription = await getItemDescription(id)
+        const itemDetails = sanitizeItemDetails(rest, itemDescription)
+        res.json(itemDetails);
     } catch (error) {
         next(error);
     }
