@@ -1,8 +1,10 @@
 import fs from "node:fs/promises";
 import express from "express";
 import 'dotenv/config';
-import apiRoutes from "./src/api/routes/itemRoutes.js";
-import errorHandler from "./src/api/services/errorHandler.js";
+import { ViteDevServer } from "vite";
+import compression from "compression";
+import apiRoutes from "./routes/routes.js";
+import errorHandler from "./services/helpers/errorHandler.js";
 
 // Constants
 const isProduction = process.env.NODE_ENV === "production";
@@ -22,7 +24,7 @@ app.use("/api", apiRoutes);
 
 // Add Vite or respective production middlewares
 /** @type {import('vite').ViteDevServer | undefined} */
-let vite;
+let vite: ViteDevServer;
 if (!isProduction) {
     const { createServer } = await import("vite");
     vite = await createServer({
@@ -32,9 +34,9 @@ if (!isProduction) {
     });
     app.use(vite.middlewares);
 } else {
-    const compression = (await import("compression")).default;
+    // const compression = (await import("compression")).default;
     const sirv = (await import("sirv")).default;
-    app.use(compression());
+    app.use(compression().default);
     app.use(base, sirv("./dist/client", { extensions: [] }));
 }
 
@@ -45,7 +47,7 @@ app.use("*all", async (req, res) => {
 
         /** @type {string} */
         let template;
-        /** @type {import('./src/entry-server.ts').render} */
+        /** @type {import('../entry-server.tsx').render} */
         let render;
         if (!isProduction) {
             // Always read fresh template in development
@@ -54,7 +56,8 @@ app.use("*all", async (req, res) => {
             render = (await vite.ssrLoadModule("/src/entry-server.tsx")).render;
         } else {
             template = templateHtml;
-            render = (await import("./dist/server/entry-server.js")).render;
+            // @ts-ignore
+            render = (await import("../../dist/server/entry-server.js")).render;
         }
 
         const rendered = await render(url);
@@ -65,13 +68,18 @@ app.use("*all", async (req, res) => {
 
         res.status(200).set({ "Content-Type": "text/html" }).send(html);
     } catch (e) {
-        vite?.ssrFixStacktrace(e);
-        console.log(e.stack);
-        res.status(500).end(e.stack);
+        if (e instanceof Error) {
+
+            vite?.ssrFixStacktrace(e);
+            console.log(e.stack);
+            res.status(500).end(e.stack);
+        } else {
+            res.status(500).end("Unknown error");
+        }
     }
 });
 
-app.get("/callback", async (req, res) => {
+app.get("/callback", async (req: express.Request, res: express.Response) => {
     try {
         const { code } = req.query;
 

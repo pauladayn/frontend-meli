@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "composite": true,
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "target": "ES2022",
+        "outDir": "./dist/server",
+        "rootDir": "./src/api",
+        "noEmit": false,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "allowImportingTsExtensions": false
+    },
+    "include": ["src/api/**/*"],
+    "exclude": ["node_modules"]
+}
