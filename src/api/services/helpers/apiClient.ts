@@ -1,12 +1,13 @@
 import axios from 'axios';
 import 'dotenv/config';
-import API_URLS from '../config/apiConfig.js';
+import API_URLS from '../../config/apiConfig.js';
+
 
 const apiClient = axios.create({
   baseURL: API_URLS.BASE,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
+    'Authorization': `Bearer ${process.env.VITE_ACCESS_TOKEN}`
   }
 })
 
