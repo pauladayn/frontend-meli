@@ -1,30 +1,27 @@
 import express from "express";
-import { searchItems, getItem, getItemDescription } from "../services/Item.js";
-import { sanitizeItemDetails, sanitizeItemsList } from "../utils/items.js";
+import { searchItems, getItem, getItemDescription } from "../services/Item";
+import { sanitizeItemDetails, sanitizeItemsList } from "../utils/items";
+import { log } from "console";
 
-export const searchItemsController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const searchItemsController = async (searchQuery: string, next: express.NextFunction) => {
     try {
-        const { q } = req.query;
-        // if (!q) {
-        //     const error = new Error('Query parameter "q" is required');
-        //     error.statusCode = 400;
-        //     throw error;
-        // }
-        const { results, filters } = await searchItems(q as string);
+     
+        log('llega a ser items controller', searchQuery)
+        const { results, filters } = await searchItems(searchQuery);
         const items = sanitizeItemsList(results, filters);
-        res.json(items);
+        return items
     } catch (error) {
         next(error);
     }
 };
 
-export const getItemController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const getItemController = async (searchQuery:string, next: express.NextFunction) => {
     try {
-        const { id } = req.params;
-        const { id: itemId, ...rest } = await getItem(id);
-        const itemDescription = await getItemDescription(id)
-        const itemDetails = sanitizeItemDetails(rest, itemDescription)
-        res.json(itemDetails);
+        //const { id } = req.params;
+        const data = await getItem(searchQuery);
+        const itemDescription = await getItemDescription(searchQuery)
+        const itemDetails = sanitizeItemDetails(data, itemDescription)
+       return itemDetails;
     } catch (error) {
         next(error);
     }

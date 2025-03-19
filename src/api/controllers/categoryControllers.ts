@@ -1,5 +1,5 @@
 import express from "express";
-import getCategory from "../services/Category.js";
+import getCategory from "../services/Category";
 
 export const getCategoryController = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
