@@ -1,7 +1,7 @@
-import REQUEST_METHODS from "../config/methodsDefinitions.js";
-import API_URLS from "../config/apiConfig.js";
-import request from "./helpers/requestManager.js";
-import { RESULT_LIMIT } from "../utils/constants.js";
+import REQUEST_METHODS from "../config/methodsDefinitions";
+import API_URLS from "../config/apiConfig";
+import request from "./helpers/requestManager";
+import { RESULT_LIMIT } from "../utils/constants";
 
 const { GET } = REQUEST_METHODS;
 const { ITEMS, SEARCH } = API_URLS;

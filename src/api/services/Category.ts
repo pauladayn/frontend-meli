@@ -1,6 +1,6 @@
-import request from "./helpers/requestManager.js";
-import REQUEST_METHODS from '../config/methodsDefinitions.js';
-import API_URLS from '../config/apiConfig.js';
+import request from "./helpers/requestManager";
+import REQUEST_METHODS from '../config/methodsDefinitions';
+import API_URLS from '../config/apiConfig';
 
 const { GET } = REQUEST_METHODS;
 const { CATEGORIES } = API_URLS;

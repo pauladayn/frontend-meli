@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'dotenv/config';
-import API_URLS from '../../config/apiConfig.js';
+import API_URLS from '../../config/apiConfig';
 
 
 const apiClient = axios.create({

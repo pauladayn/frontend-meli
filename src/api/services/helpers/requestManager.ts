@@ -1,5 +1,5 @@
 import axios from "axios";
-import apiClient from "./apiClient.js";
+import apiClient from "./apiClient";
  const request = async (method: string, url: string, params = {}) => {
   try {
     const response = await apiClient({

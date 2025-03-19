@@ -4,14 +4,18 @@ import {
     searchItemsController,
     getItemController,
     getItemDescriptionController,
-} from "../controllers/itemControllers.js";
-import { getCategoryController } from "../controllers/categoryControllers.js";
+} from "../controllers/itemControllers";
+import { getCategoryController } from "../controllers/categoryControllers";
+import ssrMiddleware from "../middleware/ssrMiddleware";
 
 const router: express.Router = express.Router();
+const BASE_API_PATH = '/api';
 
-router.get("/items", searchItemsController);
-router.get("/items/:id", getItemController);
-router.get("/items/:id/description", getItemDescriptionController);
-router.get("/categories/:id", getCategoryController);
+router.get(`${BASE_API_PATH}/items`, searchItemsController);
+router.get(`${BASE_API_PATH}/items/:id`, getItemController);
+router.get(`${BASE_API_PATH}/items/:id/description`, getItemDescriptionController);
+router.get(`${BASE_API_PATH}/categories/:id`, getCategoryController);
+
+router.use(ssrMiddleware)
 
 export default router;
