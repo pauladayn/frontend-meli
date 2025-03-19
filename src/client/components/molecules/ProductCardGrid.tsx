@@ -3,31 +3,31 @@ import freeShippingIcon from "@/assets/ic_shipping.png";
 
 type ProductCardProps = {
     id: string;
-    image: string;
-    price: number;
-    sellerLocation: string;
-    description: string;
-    freeShipping: boolean;
+    picture: string;
+    condition: string;
+    price: { amount: number; currency: string; decimals: number };
+    sellerLocation?: string;
+    title?: string;
+    free_shipping: boolean;
 };
 const ProductCard: React.FC<
     ProductCardProps & {
         goToUrl: string;
     }
-> = ({ image, price, sellerLocation, description, freeShipping, goToUrl }) => {
+> = ({ picture, price, sellerLocation, title, free_shipping, goToUrl }) => {
     return (
         <article className='d-flex product-card col-10'>
             <div className='mx-md product-image'>
-                imagen
-                <img src={image} alt='product image' />
+                <img src={picture} alt='product image' />
             </div>
             <div className='d-flex flex-column'>
                 <div className='product-title'>
                     <div>
                         <a href={goToUrl}>
                             <h3 aria-labelledby='precio del producto'>
-                                {price}
+                                {`${price.currency} ${price.amount}`}
                             </h3>
-                            {freeShipping && (
+                            {free_shipping && (
                                 <img
                                     src={freeShippingIcon}
                                     alt='envio incluido'
@@ -42,12 +42,12 @@ const ProductCard: React.FC<
                     </p>
                 </div>
                 {/* vercomo agregar esto mt-xl */}
-                <div className='d-flex flex-wrap'>
+                <div className='mt-xl d-flex flex-wrap'>
                     <p
                         className='product-description'
                         aria-labelledby='descripcion del producto'
                     >
-                        {description}
+                        {title}
                     </p>
                 </div>
             </div>

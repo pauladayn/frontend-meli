@@ -2,6 +2,10 @@ import React from "react";
 import logo from "@/assets/Logo_ML.png";
 import searchIcon from "@/assets/ic_Search.png";
 
+//añadir un use debounce
+//añadir validaciones para el input
+//añadir un search dropdown para 'almacenar' ultimas busquedas
+
 const Header = () => {
     return (
         <header className='header flex-wrap center'>
