@@ -8,13 +8,12 @@
     nav {
         width: 100%;
         max-width: $container-max-width;
-        margin: 0 auto;
+        // margin: 0 auto;
         padding: 0 $regular;
 
         .nav-content {
             flex: 1;
-            max-width: 912px;
-            margin: 0 auto;
+            // margin: 0 auto;
             a {
                 display: flex;
                 align-items: center;
@@ -58,7 +57,7 @@
         background-color: transparent;
         flex: 1;
         border: none;
-        font-size: 1rem;
+        font-size: 1.125rem;
         color: $dark-gray;
         padding: $small;
         caret-color: $dark-gray;

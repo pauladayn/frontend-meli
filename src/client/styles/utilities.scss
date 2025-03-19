@@ -1,0 +1,68 @@
+$spacings: (
+  "none": 0px,
+    "xs": 4px,
+    "sm": 8px,
+    "md": 16px,
+    "lg": 24px,
+    "xl": 32px,
+);
+
+@each $name, $size in $spacings {
+    // x4
+    .m-#{$name} {
+        margin: $size;
+    }
+    // solo vertical
+    .my-#{$name} {
+        margin-top: $size;
+        margin-bottom: $size;
+    }
+    // solo horizontal
+    .mx-#{$name} {
+        margin-left: $size;
+        margin-right: $size;
+    }
+    // por lados
+    .mt-#{$name} {
+        margin-top: $size;
+    }
+    .mr-#{$name} {
+        margin-right: $size;
+    }
+    .mb-#{$name} {
+        margin-bottom: $size;
+    }
+    .ml-#{$name} {
+        margin-left: $size;
+    }
+}
+
+@each $name, $size in $spacings {
+    .p-#{$name} {
+        padding: $size;
+    }
+    .py-#{$name} {
+        padding-top: $size;
+        padding-bottom: $size;
+    }
+    .px-#{$name} {
+        padding-left: $size;
+        padding-right: $size;
+    }
+    .pt-#{$name} {
+        padding-top: $size;
+    }
+    .pr-#{$name} {
+        padding-right: $size;
+    }
+    .pb-#{$name} {
+        padding-bottom: $size;
+    }
+    .pl-#{$name} {
+        padding-left: $size;
+    }
+}
+
+.m-auto {
+  margin: 0 auto;
+}

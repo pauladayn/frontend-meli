@@ -1,5 +1,6 @@
 import logo from "./assets/Logo_ML.png";
 import searchIcon from "./assets/ic_Search.png";
+import shippingIcon from "./assets/ic_shipping.png";
 import "./styles/main.scss";
 
 function App() {
@@ -30,18 +31,28 @@ function App() {
     //     }
     // };
 
+    const emptyArray = Array.from(new Array(5).fill(0));
     return (
         <>
             <header className='header flex-wrap center'>
                 <nav
-                    className='navbar flex-wrap center'
+                    className='navbar flex-wrap center m-auto'
                     aria-label='navegación principal'
                 >
-                    <div className='nav-content center'>
+                    <div className='nav-content center m-auto'>
                         <a href='/' aria-label='Mercado Libre'>
-                            <img src={logo} alt='Mercado Libre logo' title='Mercado Libre' />
+                            <img
+                                src={logo}
+                                alt='Mercado Libre logo'
+                                title='Mercado Libre'
+                            />
                         </a>
-                        <form action='' className='search' role='search' method="GET">
+                        <form
+                            action=''
+                            className='search'
+                            role='search'
+                            method='GET'
+                        >
                             <label
                                 htmlFor='search-input'
                                 className='visually-hidden'
@@ -49,11 +60,11 @@ function App() {
                                 Buscar productos
                             </label>
                             <input
-                              id="search-input"
-                              name="search"
-                              type='text'
-                              placeholder='Nunca dejes de buscar'
-                              autoComplete="off"
+                                id='search-input'
+                                name='search'
+                                type='text'
+                                placeholder='Nunca dejes de buscar'
+                                autoComplete='off'
                             />
                             <button
                                 className=''
@@ -68,13 +79,84 @@ function App() {
             </header>
             <main>
                 <div className='container'>
+                    <div className='py-md breadcrumb'>
+                        breadcrumb de categorias = tuki = tuki = tuki
+                    </div>
                     <div className='row'>
-                        <div className='col-6'>
-                            <p>columna 1</p>
-                        </div>
-                        <div className='col-6'>
-                            <p>columna 2</p>
-                        </div>
+                        {emptyArray.map((_, index) => (
+                            <div className='col-10 my-md' key={index}>
+                                <div className='d-flex'>
+                                    <div className='mx-md'>
+                                        imagen
+                                        <img
+                                            src=''
+                                            alt=''
+                                            style={{
+                                                height: "auto",
+                                                verticalAlign: "middle",
+                                            }}
+                                        />
+                                    </div>
+                                    <div
+                                        className='d-flex'
+                                        style={{ flexDirection: "column" }}
+                                    >
+                                        <div className='d-flex'>
+                                            <div
+                                                className='d-flex'
+                                                style={{ flexGrow: 2, alignItems: 'center', gap: '.5rem' }}
+                                            >
+                                                <h3
+                                                    className='mr-sm'
+                                                    style={{
+                                                        margin: 0,
+                                                        lineHeight: "1.25rem",
+                                                    }}
+                                                >
+                                                    precio y logo $1980
+                                                </h3>
+                                                <img
+                                                    style={{
+                                                        verticalAlign: "middle",
+                                                        width: "16px",
+                                                        height: '16px'
+                                                    }}
+                                                    src={shippingIcon}
+                                                    alt=''
+                                                />
+                                            </div>
+                                            <div>
+                                                <p
+                                                    style={{
+                                                        marginLeft: "auto",
+                                                        fontSize: "12px",
+                                                    }}
+                                                >
+                                                    ubicacion
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className='mt-xl row'>
+                                            <div className='col-5'>
+                                                <p style={{ fontSize: "18px" }}>
+                                                    nombre de articulo Lorem
+                                                    ipsum dolor sit amet
+                                                    consectetur adipisicing
+                                                    elit. Fugiat temporibus
+                                                    perferendis, dignissimos
+                                                    esse amet reprehenderit
+                                                    consectetur nam culpa
+                                                    recusandae, repellendus
+                                                    porro. Illum aliquam ullam
+                                                    praesentium repellat
+                                                    quisquam hic, illo laborum?
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </main>
