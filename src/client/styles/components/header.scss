@@ -30,23 +30,11 @@
 
 .search {
     margin-left: $regular;
-    background-color: white;
+    background-color: $white;
     border-radius: $small-radius;
     display: flex;
     align-items: center;
     flex: 1;
-
-    .visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
 
     &:focus-within {
         border-color: $accent_color;
