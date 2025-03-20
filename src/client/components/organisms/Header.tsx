@@ -1,12 +1,16 @@
 import React from "react";
 import logo from "@/assets/Logo_ML.png";
 import searchIcon from "@/assets/ic_Search.png";
-
-//añadir un use debounce
-//añadir validaciones para el input
-//añadir un search dropdown para 'almacenar' ultimas busquedas
+import { useSearch } from "@/hooks/useSearch";
 
 const Header = () => {
+    const { search, setSearch, handleSearch } = useSearch({ delay: 300 });
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        handleSearch();
+    };
+
     return (
         <header className='header flex-wrap center'>
             <nav
@@ -22,10 +26,11 @@ const Header = () => {
                         />
                     </a>
                     <form
-                        action=''
+                        action='/items'
                         className='search'
                         role='search'
                         method='GET'
+                        onSubmit={handleSubmit}
                     >
                         <label
                             htmlFor='search-input'
@@ -36,9 +41,12 @@ const Header = () => {
                         <input
                             id='search-input'
                             name='search'
-                            type='text'
+                            type='search'
+                            autoFocus
                             placeholder='Nunca dejes de buscar'
                             autoComplete='off'
+                            onChange={(event) => setSearch(event.target.value)}
+                            value={search}
                         />
                         <button
                             className=''
