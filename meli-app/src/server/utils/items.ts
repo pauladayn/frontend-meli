@@ -1,4 +1,4 @@
-import { CategoryDTO, GenericItem, ItemsList, ItemDescription, ItemDetails, Item } from "../../types";
+import { CategoryDTO, GenericItem, ItemsList, ItemDescription, ItemDetails, Item } from "../../DTOtypes";
 import { AUTHOR, DECIMALS_QUANTITY } from "./constants";
 
 export const sanitizeCategories = (filters: CategoryDTO[] | Array<{ [key: string]: string }>): Array<string> => {

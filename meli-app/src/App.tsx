@@ -7,7 +7,7 @@ import ProductCardDetail from "./client/components/molecules/ProductCardDetail";
 import CategoriesBreadcrumb from "./client/components/molecules/CategoriesBreadcrumb";
 import AuthLayout from "./client/components/templates/AuthLayout";
 import Home from "./client/Home";
-import { ApiResponseData } from "./types";
+import { ApiResponseData } from "./DTOtypes";
 import {
     getProductDetailProps,
     getProductListProps,

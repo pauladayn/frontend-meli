@@ -1,5 +1,5 @@
 import React from "react";
-import { ItemDetails } from "../../../types";
+import { ItemDetails } from "../../../DTOtypes";
 import { formatPrice } from "../../utils/parseNumberToCurrency";
 
 const ProductCardDetail = ({ item }: ItemDetails) => (

@@ -1,6 +1,6 @@
 import React from "react";
 import ProductCard from "../molecules/ProductCardForList";
-import { Item } from "../../../types";
+import { Item } from "../../../DTOtypes";
 
 export default function ProductList({
     items,

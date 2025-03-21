@@ -1,4 +1,4 @@
-import { ApiResponseData, Item, ItemDetails } from "../../types";
+import { ApiResponseData, Item, ItemDetails } from "../../DTOtypes";
 
 export const getProductDetailProps=(data: ApiResponseData): ItemDetails=>  {
   if (data.type === "detail") {

@@ -1,4 +1,4 @@
-import { SearchResponseData } from "../../types";
+import { SearchResponseData } from "../../DTOtypes";
 import getCategory from "../services/Category";
 import { searchItems, getItem, getItemDescription } from "../services/Item";
 import { sanitizeItemsList, sanitizeItemDetails, sanitizeCategories } from "../utils/items";
