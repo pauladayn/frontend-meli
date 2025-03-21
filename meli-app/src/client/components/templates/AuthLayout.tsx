@@ -1,5 +1,3 @@
-import React from "react";
-
 const AuthLayout = () => (
     <div className='container'>
         <div className='row card auth-layout'>

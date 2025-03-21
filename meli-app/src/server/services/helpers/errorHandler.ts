@@ -5,7 +5,7 @@ interface CustomError extends Error {
     message: string;
     stack?: string;
 }
-const errorHandler = (error: CustomError, req: express.Request, res: express.Response) => {
+const errorHandler = (error: CustomError, _: express.Request, res: express.Response) => {
     const statusCode = error.statusCode || 500;
     const message = error.message || "Internal Server Error";
 

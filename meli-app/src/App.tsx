@@ -1,4 +1,3 @@
-import React from "react";
 import ProductList from "./client/components/templates/ProductList";
 import Header from "./client/components/organisms/Header";
 import LoggedLayout from "./client/components/templates/LoggedLayout";

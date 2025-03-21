@@ -1,4 +1,3 @@
-import React from "react";
 import ProductCard from "../molecules/ProductCardForList";
 import { Item } from "../../../DTOtypes";
 

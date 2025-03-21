@@ -6,11 +6,11 @@ export const searchItemsController = async (req: Request, res: Response, next: N
     try {
         const searchQuery = req.query.q;
         if (!searchQuery) {
-            return res.status(400).json({ error: 'Query parameter "search" is required' });
+           res.status(400).json({ error: 'Query parameter "search" is required' });
         }
 
         const items = await searchResponseHandler(searchQuery as string)
-        return res.json(items)
+        res.json(items)
     } catch (error) {
         next(error);
     }
@@ -20,7 +20,7 @@ export const getItemController = async (req: Request, res: Response, next: NextF
     try {
         const { id } = req.params;
         const data = await itemDetailResponseHandler(id)
-        return res.json(data)
+        res.json(data)
     } catch (error) {
         next(error);
     }

@@ -1,4 +1,3 @@
-import React from "react";
 import { ItemDetails } from "../../../DTOtypes";
 import { formatPrice } from "../../utils/parseNumberToCurrency";
 

@@ -57,7 +57,7 @@ app.get("*", async (req, res, next) => {
                 author: AUTHOR,
                 items: [],
                 categories: [],
-                type: "default",
+                type: "list",
                 query: "",
             };
             const noTokenElement = createElement(

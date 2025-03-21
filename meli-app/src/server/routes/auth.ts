@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { handleLogin, handleCallback } from "../controllers/authControllers";
 
-const authRouter = Router();
+const authRouter: Router = Router();
 
 authRouter.get("/login", handleLogin);
 
