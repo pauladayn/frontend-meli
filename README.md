@@ -2,6 +2,8 @@
 
 Este proyecto es una aplicación web desarrollada como parte del desafío de frontend para Mercado Libre. La aplicación permite a los usuarios buscar productos, ver detalles de los mismos y realizar otras interacciones relacionadas con el comercio electrónico.
 
+Para ver el proyecto live ingresá a https://frontend-meli.onrender.com
+
 ## Tecnologías Utilizadas
 
 - **React**: Biblioteca para construir interfaces de usuario.
@@ -49,8 +51,10 @@ El frontend sigue el enfoque de **Atomic Design**, que organiza los componentes 
 1. Clona este repositorio en tu máquina local:
 
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
-   cd tu-repositorio
+   git@github.com:pauladayn/frontend-meli.git
+   cd tu-repositorio 
+   cd meli-app
+
 
 2. Instalá las dependencias del proyecto
  ``` pnpm install   ```
