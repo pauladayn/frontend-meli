@@ -108,6 +108,7 @@ app.get("*", async (req, res, next) => {
                 <title>${meta.title || "Mercado Libre"}</title>
                   <meta name="description" content="${meta.description || ""}" />
                 <link rel="stylesheet" href="/public/index.css" />
+                    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
               </head>
               <body>
                 <div id="root">`);

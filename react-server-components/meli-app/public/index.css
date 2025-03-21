@@ -316,10 +316,20 @@ ul {
 }
 .product-card__title {
     font-weight: 400;
+    font-size: 1.5rem;
 }
-
+.product-card__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .product-card__price {
     margin-top: 2rem;
+    font-size: 1.125rem;
+}
+.product-card__location {
+    font-size: 12px;
+    margin-top: .5rem;
 }
 
 .product-item {
@@ -327,6 +337,7 @@ ul {
     background-color: var(--white);
     border-radius: var(--small-radius);
     position: relative;
+    align-items: center;
 }
 
 .product-image-col,
@@ -459,7 +470,7 @@ ul {
         grid-column: span 2;
     }
     .product-info-col {
-        grid-column: span 10;
+        grid-column: span 8;
     }
 
     .product-image {

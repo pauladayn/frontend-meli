@@ -2,8 +2,8 @@ import React from "react";
 
 const HomePage = () => {
     return (
-        <div className='row'>
-            <p>bienvenid@!</p>
+        <div className='row card'>
+            <p style={{ marginTop: "2rem" }}>bienvenid@!</p>
         </div>
     );
 };
