@@ -1,0 +1,41 @@
+{
+    "name": "meli-app",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon --watch src --exec \"NODE_ENV=development tsx src/server/server.ts\"",
+        "build": "tsc -b && vite build",
+        "preview": "NODE_ENV=production tsx src/server/server.ts"
+    },
+    "dependencies": {
+        "add": "^2.0.6",
+        "axios": "^1.8.4",
+        "compression": "^1.8.0",
+        "cors": "^2.8.5",
+        "express": "^4.21.2",
+        "path-to-regexp": "^8.2.0",
+        "pnpm": "^10.6.5",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-router": "^7.4.0",
+        "sirv": "^3.0.1"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.21.0",
+        "@types/react": "^19.0.10",
+        "@types/react-dom": "^19.0.4",
+        "@vitejs/plugin-react": "^4.3.4",
+        "concurrently": "^9.1.2",
+        "eslint": "^9.21.0",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "eslint-plugin-react-refresh": "^0.4.19",
+        "globals": "^15.15.0",
+        "nodemon": "^3.1.9",
+        "ts-node": "^10.9.2",
+        "tsx": "^4.19.3",
+        "typescript": "~5.7.2",
+        "typescript-eslint": "^8.24.1",
+        "vite": "^6.2.0"
+    }
+}
