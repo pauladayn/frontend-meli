@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type GenericItem = Record<string, any>;
 type CategoryDTO = {
   id: string;
@@ -6,6 +7,14 @@ type CategoryDTO = {
   values: Array<{ [key: string]: string }>;
 }
 
+type ImageDetails = {
+  id: string;
+  url: string;
+  secure_url: string;
+  size: string;
+  max_size: string;
+  quality: string;
+}
 type Item = {
   id: string;
   title: string;
@@ -15,9 +24,9 @@ type Item = {
     decimals: number;
   };
   picture: string;
+  detail_image?: ImageDetails;
   condition: string;
   free_shipping: boolean;
-  // categories: string[];
   seller_address: string;
 };
 

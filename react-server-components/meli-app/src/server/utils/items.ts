@@ -25,6 +25,7 @@ const sanitizeItem = <T extends GenericItem>(
     decimals: DECIMALS_QUANTITY,
   },
   picture: item.thumbnail || "",
+  detail_image: Array.isArray(item?.pictures) && item.pictures[0] || "",
   condition: item.condition || "",
   free_shipping: item.shipping?.free_shipping || false,
   seller_address: item.seller_address?.state.name || ''

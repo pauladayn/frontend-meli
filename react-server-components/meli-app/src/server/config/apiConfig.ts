@@ -1,6 +1,8 @@
 const API_URLS = {
     BASE: "https://api.mercadolibre.com",
-    AUTH_MELI: "https://auth.mercadolibre.com.ar",
+    AUTH: "https://auth.mercadolibre.com.ar",
+    TOKEN: "https://api.mercadolibre.com/oauth/token",
+    AUTHORIZATION: "https://auth.mercadolibre.com.ar/authorization",
     ITEMS: "/items",
     SEARCH: "/sites/MLA/search",
     CATEGORIES: "/categories",

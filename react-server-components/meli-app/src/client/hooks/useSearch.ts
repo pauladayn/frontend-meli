@@ -32,7 +32,6 @@ export const useSearch = ({ delay = 300, query }: UserSearchProps) => {
   const handleSearch = (term: string = search) => {
     const trimmedTerm = term.trim();
     if (!trimmedTerm) return;
-
     const searchQuery = `search=${encodeURIComponent(trimmedTerm)}`;
     navigate(`/items?${searchQuery}`);
   };
