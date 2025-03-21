@@ -58,4 +58,19 @@ type SearchResponseData = ItemsList & {
   query: string;
 }
 
-export type { Author, GenericItem, CategoryDTO, ItemsList, Item, ItemDetails, ItemDescription, SearchResponseData }
+type BaseApiResponse = {
+  loggedIn: boolean;
+  query: string;
+  categories: Array<string>;
+};
+interface ApiListResponse extends BaseApiResponse, ItemsList {
+  type: 'list';
+}
+
+interface ApiDetailResponse extends BaseApiResponse, ItemDetails {
+  type: 'detail';
+}
+
+type ApiResponseData = ApiListResponse | ApiDetailResponse;
+
+export type { Author, GenericItem, CategoryDTO, ItemsList, Item, ItemDetails, ItemDescription, SearchResponseData, ApiResponseData }

@@ -7,17 +7,15 @@ import ProductCardDetail from "./client/components/molecules/ProductCardDetail";
 import CategoriesBreadcrumb from "./client/components/molecules/CategoriesBreadcrumb";
 import AuthLayout from "./client/components/templates/AuthLayout";
 import Home from "./client/Home";
-import { Item, ItemDetails } from "./types";
+import { ApiResponseData } from "./types";
+import {
+    getProductDetailProps,
+    getProductListProps,
+} from "./server/utils/typeValidators";
 
-type BaseApiResponse = {
-    loggedIn: boolean;
-    query: string;
-    categories: Array<string>;
-};
-type ItemsApiResponse = ItemDetails | Array<Item>;
-type ApiResponseData = BaseApiResponse & ItemsApiResponse;
 export default function App(data: ApiResponseData) {
-    const { loggedIn } = data;
+    const { loggedIn, query, categories } = data;
+    const productListProps = getProductListProps(data);
 
     return (
         <main>
@@ -25,22 +23,24 @@ export default function App(data: ApiResponseData) {
                 <AuthLayout />
             ) : (
                 <>
-                    <Header query={data.query} />
+                    <Header query={query} />
                     <LoggedLayout>
                         {data.categories && (
-                            <CategoriesBreadcrumb
-                                categories={data.categories}
-                            />
+                            <CategoriesBreadcrumb categories={categories} />
                         )}
                         <Routes>
                             <Route path='/' element={<Home />} />
                             <Route
                                 path='/items'
-                                element={<ProductList {...data} />}
+                                element={<ProductList {...productListProps} />}
                             />
                             <Route
                                 path='/items/:id'
-                                element={<ProductCardDetail {...data} />}
+                                element={
+                                    <ProductCardDetail
+                                        {...getProductDetailProps(data)}
+                                    />
+                                }
                             />
                         </Routes>
                     </LoggedLayout>

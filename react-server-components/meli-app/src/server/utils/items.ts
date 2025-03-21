@@ -28,7 +28,7 @@ const sanitizeItem = <T extends GenericItem>(
   detail_image: Array.isArray(item?.pictures) && item.pictures[0] || "",
   condition: item.condition || "",
   free_shipping: item.shipping?.free_shipping || false,
-  seller_address: item.seller_address?.state.name || ''
+  seller_address: item.address?.state_name || ''
 });
 
 const sanitizeItemsList = <T extends GenericItem>(items: T[], filters: CategoryDTO[]): ItemsList => {

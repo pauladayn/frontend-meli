@@ -64,7 +64,7 @@ const routeHandlers: Record<
     const data = await searchResponseHandler(searchTerm);
 
     return {
-      data,
+      data: {...data, type: 'list'},
       meta: {
         title: `Resultados para "${searchTerm}" - Mercado Libre`,
         description: `Encontrá los mejores resultados para "${searchTerm}" en Mercado Libre.`,
@@ -81,7 +81,7 @@ const routeHandlers: Record<
     const itemData = await itemDetailResponseHandler(id);
 
     return {
-      data: { ...itemData, query: searchTerm },
+      data: { ...itemData, query: searchTerm, type: 'detail' },
       meta: {
         title: `${itemData.item.title} - Mercado Libre`,
         description: `Comprá ${itemData.item.title} al mejor precio en Mercado Libre.`,

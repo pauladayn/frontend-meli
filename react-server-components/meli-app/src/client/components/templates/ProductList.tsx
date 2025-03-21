@@ -9,6 +9,7 @@ export default function ProductList({
     items: Array<Item>;
     query: string;
 }) {
+
     return (
         <section className='row card' aria-label='listado de productos'>
             <h2 className='visually-hidden'>Resultados de la búsqueda</h2>
