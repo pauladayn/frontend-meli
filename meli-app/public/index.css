@@ -479,3 +479,64 @@ ul {
         border-radius: var(--small-radius);
     }
 }
+
+
+/* Skeleton base */
+.skeleton-box {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Skeleton para el título */
+.skeleton-title {
+    width: 60%;
+    height: 1rem;
+    margin-bottom: .5rem;
+}
+
+/* Skeleton para la descripción */
+.skeleton-description {
+    width: 80%;
+    height: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Skeleton para la imagen */
+.product-image.skeleton-box {
+    width: 100%;
+    height: 100px;
+}
+
+/* Efecto shimmer */
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: 200px 0;
+    }
+}
+
+.error-layout {
+    padding: 20px;
+    text-align: center;
+}
+
+.error-layout__content p {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #ff4d4f; 
+}
+
+.error-layout__content .main-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.error-layout__content .main-btn:hover {
+    background-color: #0056b3;
+}

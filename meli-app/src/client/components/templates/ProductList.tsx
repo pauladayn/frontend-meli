@@ -1,5 +1,6 @@
 import ProductCard from "../molecules/ProductCardForList";
 import { Item } from "../../../DTOtypes";
+import ProductListSkeleton from "./ProductListSkeleton";
 
 export default function ProductList({
     items,
@@ -9,6 +10,7 @@ export default function ProductList({
     query: string;
 }) {
 
+    if(!Object.keys(items).length) return <ProductListSkeleton />
     return (
         <section className='row card' aria-label='listado de productos'>
             <h2 className='visually-hidden'>Resultados de la búsqueda</h2>

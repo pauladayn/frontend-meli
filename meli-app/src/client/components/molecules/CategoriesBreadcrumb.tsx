@@ -3,7 +3,7 @@ import { Link } from "react-router";
 const CategoriesBreadcrumb = ({
     categories = [],
 }: {
-    categories: Array<string>;
+    categories?: Array<string>;
 }) => {
     if (!categories.length) {
         return (

@@ -1,1 +1,1 @@
-export {};
+import "../public/index.css";

@@ -16,7 +16,11 @@ import { findRouteHandler } from "./handlers/routeHandlers";
 import errorHandler from "./services/helpers/errorHandler";
 import { getAccessToken } from "./services/Auth";
 import { AUTHOR } from "./utils/constants";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const isProduction = process.env.NODE_ENV === "production";
 const port = 3000;
 const base = process.env.BASE || "/";
@@ -63,6 +67,7 @@ app.get("*", async (req, res, next) => {
             const noTokenElement = createElement(
                 StaticRouter,
                 { location: req.url },
+                //@ts-expect-error App acá no tiene datos
                 createElement(App, {
                     ...defaultData,
                 })
@@ -109,6 +114,7 @@ app.get("*", async (req, res, next) => {
         const hasTokenElement = createElement(
             StaticRouter,
             { location: req.url },
+            //@ts-expect-error props
             createElement(App, { ...data, loggedIn: true })
         );
 

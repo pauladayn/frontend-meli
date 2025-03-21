@@ -38,7 +38,7 @@ type Author = {
 type ItemsList = {
   author: Author;
   items: Array<Item>;
-  categories: Array<string>;
+  categories?: Array<string>;
 };
 
 type ItemDetails = {
@@ -58,16 +58,16 @@ type SearchResponseData = ItemsList & {
   query: string;
 }
 
-type BaseApiResponse = {
+type BaseApiResponse = Partial<{
   loggedIn: boolean;
   query: string;
   categories: Array<string>;
-};
-interface ApiListResponse extends BaseApiResponse, ItemsList {
+}>;
+interface ApiListResponse extends Partial<BaseApiResponse>, ItemsList {
   type: 'list';
 }
 
-interface ApiDetailResponse extends BaseApiResponse, ItemDetails {
+interface ApiDetailResponse extends Partial<BaseApiResponse>, ItemDetails {
   type: 'detail';
 }
 

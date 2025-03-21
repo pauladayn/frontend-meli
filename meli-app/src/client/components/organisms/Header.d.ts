@@ -1,4 +1,4 @@
 declare const Header: ({ query }: {
-    query: string;
+    query?: string;
 }) => import("react/jsx-runtime").JSX.Element;
 export default Header;

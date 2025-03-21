@@ -1,7 +1,7 @@
 import React from "react";
 import { useSearch } from "../../hooks/useSearch";
 
-const Header = ({ query }: { query: string }) => {
+const Header = ({ query = "" }: { query?: string }) => {
     const { search, setSearch, handleSearch } = useSearch({ delay: 300, query });
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
