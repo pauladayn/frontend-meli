@@ -14,6 +14,8 @@ import itemRouter from './routes/items';
 import authRouter from "./routes/auth";
 import { findRouteHandler } from "./handlers/routeHandlers";
 import errorHandler from "./services/helpers/errorHandler";
+import { getAccessToken } from "./services/Auth";
+import { AUTHOR } from "./utils/constants";
 
 const isProduction = process.env.NODE_ENV === "production";
 const port = 3000;
@@ -47,7 +49,55 @@ app.use(authRouter);
 //SSR
 app.get("*", async (req, res, next) => {
     try {
+        // Si no hay token, renderizamos la app con loggedIn: false
+        if (!getAccessToken()) {
 
+            const defaultData = {
+                loggedIn: false,
+                author: AUTHOR,
+                items: [],
+                categories: [],
+                type: "default",
+                query: "",
+            };
+            const noTokenElement = createElement(
+                StaticRouter,
+                { location: req.url },
+                createElement(App, {
+                    ...defaultData,
+                })
+            );
+
+            const { pipe: pipeNoToken } = renderToPipeableStream(noTokenElement, {
+                onShellReady() {
+                    res.statusCode = 200;
+                    res.setHeader("Content-Type", "text/html");
+                    res.write(`<!DOCTYPE html>
+              <html>
+                <head>
+                  <meta charset="UTF-8" />
+                  <title>Mercado Libre</title>
+                  <link rel="stylesheet" href="/public/index.css" />
+                  <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+                </head>
+                <body>
+                  <div id="root">`);
+                    pipeNoToken(res);
+                },
+                onAllReady() {
+                    res.write(`</div></body></html>`);
+                    res.end();
+                },
+                onError(err) {
+                    console.error(err);
+                    res.statusCode = 500;
+                    res.send("Internal Server Error");
+                },
+            });
+            return;
+        }
+
+        // Si hay token, seguimos con la lógica normal:
         const handler = findRouteHandler(req.path);
         if (!handler) {
             res.status(404).send("Not Found");
@@ -71,9 +121,9 @@ app.get("*", async (req, res, next) => {
               <head>
                 <meta charset="UTF-8" />
                 <title>${meta.title || "Mercado Libre"}</title>
-                  <meta name="description" content="${meta.description || ""}" />
+                <meta name="description" content="${meta.description || ""}" />
                 <link rel="stylesheet" href="/public/index.css" />
-                    <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
+                <link rel="icon" type="image/svg+xml" href="/public/favicon.ico" />
               </head>
               <body>
                 <div id="root">`);
@@ -93,7 +143,6 @@ app.get("*", async (req, res, next) => {
         next(error);
     }
 });
-
 
 app.use(errorHandler)
 

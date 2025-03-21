@@ -43,8 +43,7 @@ export async function handleCallback(req: Request, res: Response) {
             return res.status(500).send(`Error from ML: ${data.error_description}`);
         }
 
-        ACCESS_TOKEN = data.access_token;
-        REFRESH_TOKEN = data.refresh_token;
+        setTokens(data.access_token, data.refresh_token);
 
         return res.redirect("/");
     } catch (err) {
